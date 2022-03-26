@@ -1,0 +1,30 @@
+/*
+chay het moi dong moi chay duoc
+*/
+CREATE DATABASE db_cuoi_ky;
+use db_cuoi_ky;
+create table Member(
+id Int primary key AUTO_INCREMENT,
+Firstname varchar(255) null,
+Lastname varchar(255) null,
+Username varchar(255) not null,
+Password varchar(255) not null,
+Phone int null,
+Email varchar(255) not null,
+Description text null,
+CreatedDate DATETIME not null default CURRENT_TIMESTAMP,
+UpdateTime DATETIME ON UPDATE CURRENT_TIMESTAMP);
+drop table Content;
+create table Content
+(
+id Int primary key AUTO_INCREMENT,
+Title varchar(255) not null,
+Brief text not null,
+Content text not null,
+CreatedDate DATETIME NOT NULL default CURRENT_TIMESTAMP,
+UpdateTime DATETIME ON UPDATE CURRENT_TIMESTAMP,
+Sort int null,
+Authorid int not null,
+Foreign key (Authorid) REFERENCES Member(id) on delete cascade on Update cascade);
+INSERT INTO Member
+VALUES (null,null,null,"alluser","Password1",null,"alluser@student.hcmute.edu.vn",null,CURRENT_TIMESTAMP,null);
